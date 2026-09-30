@@ -5,7 +5,7 @@ right inside SDR#, using the open-source [nrsc5](https://github.com/theori-io/nr
 Tune an HD station in WFM and the digital audio, song info and album art just show up,
 blended with the analog signal the way a real HD receiver does it.
 
-![808 HD playing HD audio](docs/images/strip-hd.png)
+![808 HD in SDR#, playing KDFC HD1 with station art, song info and signal quality](docs/images/sdrsharp-808hd.png)
 
 ## Features
 
