@@ -82,7 +82,15 @@ Copy-Item "$root\LICENSE" "$stage\LICENSE.txt"
 Copy-Item "$root\THIRD_PARTY_NOTICES.md" $stage
 Copy-Item "$root\packaging\INSTALL.txt" $stage
 Remove-Item $zip -ErrorAction SilentlyContinue
-Compress-Archive -Path $stage -DestinationPath $zip
+# Build the zip by hand: Compress-Archive in Windows PowerShell 5.1 writes "808HD\file" entry
+# names with backslashes, which non-Windows unzip tools mishandle.
+Add-Type -AssemblyName System.IO.Compression, System.IO.Compression.FileSystem
+$archive = [IO.Compression.ZipFile]::Open($zip, [IO.Compression.ZipArchiveMode]::Create)
+try {
+    foreach ($file in Get-ChildItem $stage -File) {
+        [IO.Compression.ZipFileExtensions]::CreateEntryFromFile($archive, $file.FullName, "808HD/$($file.Name)", [IO.Compression.CompressionLevel]::Optimal) | Out-Null
+    }
+} finally { $archive.Dispose() }
 Remove-Item "$root\dist\stage" -Recurse -Force
 $hash = (Get-FileHash $zip -Algorithm SHA256).Hash.ToLower()
 "$hash  $(Split-Path $zip -Leaf)" | Set-Content "$zip.sha256" -Encoding ascii
