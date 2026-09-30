@@ -73,8 +73,8 @@ Requirements (all free):
   allow redistribution, so it isn't in this repository; you only need it to compile.
 
 ```powershell
-git clone --recursive https://github.com/<you>/<repo>.git
-cd <repo>
+git clone --recursive https://github.com/mattackerman808/808-HD.git
+cd 808-HD
 # unzip the SDR# plugin SDK so that sdk\sdrplugins\lib\SDRSharp.Common.dll exists
 .\build.ps1
 ```

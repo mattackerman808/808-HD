@@ -25,6 +25,6 @@ Use
 Uninstall
   Delete the Plugins\808HD folder (or rename it to _808HD to disable it).
 
-More: {{REPO_URL}}
+More: https://github.com/mattackerman808/808-HD
 License: GPL-3.0-or-later (LICENSE.txt). Third-party components: THIRD_PARTY_NOTICES.md
 HD Radio is a trademark of Xperi Inc.; this project is not affiliated with Xperi or Airspy.
