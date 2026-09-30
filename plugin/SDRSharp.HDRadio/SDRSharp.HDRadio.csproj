@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <OutputType>Library</OutputType>
+    <Platforms>x64</Platforms>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseWindowsForms>true</UseWindowsForms>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Nullable>disable</Nullable>
+    <RootNamespace>SDRSharp.HDRadio</RootNamespace>
+    <AssemblyName>SDRSharp.HDRadio</AssemblyName>
+    <Version>0.1.0</Version>
+    <Product>808 HD - HD Radio plugin for SDR#</Product>
+    <Description>Decodes HD Radio (NRSC-5) broadcasts inside SDR# using libnrsc5.</Description>
+    <Copyright>GPL-3.0-or-later</Copyright>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    <!-- Reference assemblies from Airspy's SDR# plugin SDK (not redistributable; see README). -->
+    <SdkLibDir>$(MSBuildThisFileDirectory)..\..\sdk\sdrplugins\lib\</SdkLibDir>
+    <Nrsc5Dll>$(MSBuildThisFileDirectory)..\..\nrsc5\build\src\libnrsc5.dll</Nrsc5Dll>
+    <!-- Optional dev convenience: if this SDR# folder exists, each build is copied into its Plugins folder. -->
+    <SdrSharpDir>$(MSBuildThisFileDirectory)..\..\sdrsharp-x64\</SdrSharpDir>
+    <PluginFolder>808HD</PluginFolder>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Provided by SDR# at runtime: reference only, never copy. -->
+    <Reference Include="SDRSharp.Common">
+      <HintPath>$(SdkLibDir)SDRSharp.Common.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="SDRSharp.Radio">
+      <HintPath>$(SdkLibDir)SDRSharp.Radio.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="$(Nrsc5Dll)" Condition="Exists('$(Nrsc5Dll)')" Link="libnrsc5.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <Target Name="Deploy" AfterTargets="Build" Condition="Exists('$(SdrSharpDir)')">
+    <ItemGroup>
+      <DeployFiles Include="$(OutDir)SDRSharp.HDRadio.dll;$(OutDir)libnrsc5*.dll" />
+    </ItemGroup>
+    <MakeDir Directories="$(SdrSharpDir)Plugins\$(PluginFolder)" />
+    <Copy SourceFiles="@(DeployFiles)" DestinationFolder="$(SdrSharpDir)Plugins\$(PluginFolder)" SkipUnchangedFiles="true" />
+    <Message Importance="high" Text="Deployed 808 HD to $(SdrSharpDir)Plugins\$(PluginFolder)" />
+  </Target>
+</Project>

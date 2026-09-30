@@ -1,13 +1,15 @@
 # Build output
 bin/
 obj/
-dist/
-nrsc5/build/
+/dist/
+/nrsc5/build/
 
-# Airspy's SDR# and plugin SDK are proprietary and not redistributable
-sdk/
-sdrsharp*/
-*.zip
+# Airspy's SDR# and plugin SDK are proprietary and not redistributable.
+# Anchored to the repo root: git on Windows ignores case, so an unanchored
+# "sdrsharp*/" would also hide plugin/SDRSharp.HDRadio/.
+/sdk/
+/sdrsharp-x64/
+/sdrsharp-plugin-sdk*.zip
 
 # Test data and generated files
 tools/sample.cu8
