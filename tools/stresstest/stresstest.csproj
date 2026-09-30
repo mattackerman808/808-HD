@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- HdDecoder start/stop stress test, plus an offline AudioInjector test ("audio" mode). -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\..\plugin\SDRSharp.HDRadio\Channelizer.cs" Link="Channelizer.cs" />
+    <Compile Include="..\..\plugin\SDRSharp.HDRadio\Native.cs" Link="Native.cs" />
+    <Compile Include="..\..\plugin\SDRSharp.HDRadio\HdDecoder.cs" Link="HdDecoder.cs" />
+    <Compile Include="..\..\plugin\SDRSharp.HDRadio\AudioInjector.cs" Link="AudioInjector.cs" />
+    <None Include="..\..\nrsc5\build\src\libnrsc5.dll" Link="libnrsc5.dll" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

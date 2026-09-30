@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Measures how far HD audio lags the analog FM audio of the same station (sample capture). -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <PlatformTarget>x64</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\..\plugin\SDRSharp.HDRadio\Channelizer.cs" Link="Channelizer.cs" />
+    <Compile Include="..\..\plugin\SDRSharp.HDRadio\Native.cs" Link="Native.cs" />
+    <None Include="..\..\nrsc5\build\src\libnrsc5.dll" Link="libnrsc5.dll" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

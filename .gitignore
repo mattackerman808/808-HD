@@ -1,0 +1,23 @@
+# Build output
+bin/
+obj/
+dist/
+nrsc5/build/
+
+# Airspy's SDR# and plugin SDK are proprietary and not redistributable
+sdk/
+sdrsharp*/
+*.zip
+
+# Test data and generated files
+tools/sample.cu8
+tools/*.wav
+tools/*.exe
+tools/ui/
+tools/api.txt
+*.log
+
+# Editors
+.vs/
+.vscode/
+*.user

@@ -1,0 +1,30 @@
+808 HD - HD Radio for SDR#
+==========================
+
+Requirements
+  - Windows 10/11, 64-bit
+  - SDR# (Airspy SDR# Studio) x64, started with SDRSharp.dotnet9.exe
+  - .NET 9 Desktop Runtime (x64): https://dotnet.microsoft.com/download/dotnet/9.0
+    or:  winget install Microsoft.DotNet.DesktopRuntime.9
+  - An SDR that SDR# can use at a sample rate of 1 MS/s or more (RTL-SDR, Airspy, ...)
+
+Install
+  1. Close SDR#.
+  2. Copy this "808HD" folder into SDR#'s "Plugins" folder, so you have:
+         <SDR# folder>\Plugins\808HD\SDRSharp.HDRadio.dll
+         <SDR# folder>\Plugins\808HD\libnrsc5.dll
+  3. Start SDRSharp.dotnet9.exe.
+
+Use
+  Tune an FM station that broadcasts HD Radio, in WFM mode, and press Play.
+  The 808 HD strip appears above the spectrum. You hear analog first; HD audio
+  takes over (time-aligned) once the digital signal is decoded, usually within
+  10-15 seconds. Use the HD1/HD2/... buttons to switch programs and the
+  "Auto HD / Analog" switch to force analog. SDR#'s volume and mute control both.
+
+Uninstall
+  Delete the Plugins\808HD folder (or rename it to _808HD to disable it).
+
+More: {{REPO_URL}}
+License: GPL-3.0-or-later (LICENSE.txt). Third-party components: THIRD_PARTY_NOTICES.md
+HD Radio is a trademark of Xperi Inc.; this project is not affiliated with Xperi or Airspy.
