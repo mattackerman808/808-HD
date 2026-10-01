@@ -9,7 +9,7 @@
     <Nullable>disable</Nullable>
     <RootNamespace>SDRSharp.HDRadio</RootNamespace>
     <AssemblyName>SDRSharp.HDRadio</AssemblyName>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <Product>808 HD - HD Radio plugin for SDR#</Product>
     <Description>Decodes HD Radio (NRSC-5) broadcasts inside SDR# using libnrsc5.</Description>
     <Copyright>GPL-3.0-or-later</Copyright>
